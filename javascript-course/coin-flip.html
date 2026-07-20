@@ -6,16 +6,10 @@
   <script>
     const randomNumber = Math.random();
     let result = "";
-    if (randomNumber >= 0 && randomNumber < 0.5) {
-      result = "Heads";
-    } else if (randomNumber >= 0.5 && randomNumber < 1) {
-      result = "Tails";
-    }
+    result = randomNumber < 0.5 ? "Heads" : "Tails";
     const guess = "Heads";
-    if (guess === result) {
-      alert(`You guessed ${guess}. The coin landed on ${result}. You win!`);
-    } else {
-      alert(`You guessed ${guess}. The coin landed on ${result}. You lose.`);
-    }
+    guess === result
+      ? alert(`You guessed ${guess}. The coin landed on ${result}. You win!`)
+      : alert(`You guessed ${guess}. The coin landed on ${result}. You lose.`);
   </script>
 </html>
