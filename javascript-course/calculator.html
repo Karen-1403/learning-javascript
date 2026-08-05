@@ -28,7 +28,7 @@
     <p></p>
     <button onclick="updtateCalculation('')">Clear</button>
     <script>
-      let calculation = "";
+      let calculation = localStorage.getItem("calculation") || "";
       function updtateCalculation(value) {
         if (value === "=") {
           calculation = eval(calculation);
@@ -37,7 +37,11 @@
         } else {
           calculation += value;
         }
+        saveCalculation();
         console.log(calculation);
+      }
+      function saveCalculation() {
+        localStorage.setItem("calculation", calculation);
       }
     </script>
   </body>

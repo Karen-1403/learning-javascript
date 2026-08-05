@@ -3,13 +3,29 @@
   <body>
     <title>Coin Flip</title>
   </body>
+  <button onclick="playGame('Heads')">Heads</button>
+  <button onclick="playGame('Tails')">Tails</button>
   <script>
-    const randomNumber = Math.random();
-    let result = "";
-    result = randomNumber < 0.5 ? "Heads" : "Tails";
-    const guess = "Heads";
-    guess === result
-      ? alert(`You guessed ${guess}. The coin landed on ${result}. You win!`)
-      : alert(`You guessed ${guess}. The coin landed on ${result}. You lose.`);
+    const score = JSON.parse(localStorage.getItem("score")) ?? {
+      wins: 0,
+      losses: 0,
+    };
+
+    function playGame(guess) {
+      const result = Math.random() < 0.5 ? "Heads" : "Tails";
+      if (result === guess) {
+        score.wins++;
+        alert(`You win! It was ${result}
+score: ${score.wins} wins, ${score.losses} losses`);
+      } else {
+        score.losses++;
+        alert(`You lose! It was ${result}
+score: ${score.wins} wins, ${score.losses} losses`);
+      }
+      saveScore();
+    }
+    function saveScore() {
+      localStorage.setItem("score", JSON.stringify(score));
+    }
   </script>
 </html>
