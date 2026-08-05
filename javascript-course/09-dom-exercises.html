@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom exercises</title>
+  </head>
+  <body>
+    <input
+      placeholder="Enter your name"
+      class="js-name-input"
+      onkeydown="handleNameInputKeyDown(event)"
+    />
+    <button onclick="displayName()">Submit</button>
+    <p class="js-name-output"></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <input class="js-text-input" onkeyup="handleLiveTextEvent(event)" />
+    <p class="js-live-text"></p>
+    <script>
+      function displayName() {
+        const name = document.querySelector(".js-name-input").value;
+        document.querySelector(".js-name-output").innerText =
+          `Your name is : ${name}`;
+      }
+      function handleNameInputKeyDown(event) {
+        if (event.key === "Enter") {
+          displayName();
+        }
+      }
+
+      function handleLiveTextEvent(event) {
+        document.querySelector(".js-live-text").innerText = event.target.value;
+      }
+    </script>
+  </body>
+</html>

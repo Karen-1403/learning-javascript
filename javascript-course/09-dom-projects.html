@@ -42,11 +42,11 @@
       }
       function calculateShippingCost() {
         const costInput = document.querySelector(".js-cost-input");
-        let shippingCost = Number(costInput.value);
-        if (shippingCost < 40) {
-          shippingCost += 10;
+        let shippingCost = Number(costInput.value) * 100;
+        if (shippingCost < 4000) {
+          shippingCost += 1000;
         }
-        displayCost(shippingCost);
+        displayCost(shippingCost / 100);
       }
       function displayCost(cost) {
         document.querySelector(".js-shipping-cost").innerText = `$${cost}`;

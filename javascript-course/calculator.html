@@ -5,6 +5,7 @@
   </head>
   <body>
     <p>Calculator</p>
+    <p class="js-result"></p>
     <button onclick="updtateCalculation('1')">1</button>
     <button onclick="updtateCalculation('2')">2</button>
     <button onclick="updtateCalculation('3')">3</button>
@@ -29,6 +30,9 @@
     <button onclick="updtateCalculation('')">Clear</button>
     <script>
       let calculation = localStorage.getItem("calculation") || "";
+      if (localStorage.getItem("calculation")) {
+        displayCalculation();
+      }
       function updtateCalculation(value) {
         if (value === "=") {
           calculation = eval(calculation);
@@ -38,10 +42,13 @@
           calculation += value;
         }
         saveCalculation();
-        console.log(calculation);
+        displayCalculation();
       }
       function saveCalculation() {
         localStorage.setItem("calculation", calculation);
+      }
+      function displayCalculation() {
+        document.querySelector(".js-result").innerText = calculation;
       }
     </script>
   </body>
