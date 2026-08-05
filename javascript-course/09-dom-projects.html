@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>dom</title>
+  </head>
+  <body>
+    <p>YouTube Subscribe Button</p>
+    <button class="js-subscribe-button" onclick="handleSubscribe()">
+      Subscribe
+    </button>
+    <p>Rock Paper Scissors</p>
+    <a href="06-rock-paper-scissors.html">Click here</a>
+    <p></p>
+
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+
+    <p>Orders over $40 = FREE shipping.</p>
+    <input
+      placeholder="Cost of order"
+      class="js-cost-input"
+      onkeydown="handleCostInputKeydown(event)"
+    />
+    <button onclick="calculateShippingCost()">Calculate</button>
+    <p class="js-shipping-cost"></p>
+    <script>
+      function handleSubscribe() {
+        const subscribeButton = document.querySelector(".js-subscribe-button");
+        if (subscribeButton.innerText === "Subscribe") {
+          subscribeButton.innerText = "Subscribed";
+        } else {
+          subscribeButton.innerText = "Subscribe";
+        }
+      }
+
+      function handleCostInputKeydown(event) {
+        if (event.key === "Enter") {
+          calculateShippingCost();
+        }
+      }
+      function calculateShippingCost() {
+        const costInput = document.querySelector(".js-cost-input");
+        let shippingCost = Number(costInput.value);
+        if (shippingCost < 40) {
+          shippingCost += 10;
+        }
+        displayCost(shippingCost);
+      }
+      function displayCost(cost) {
+        document.querySelector(".js-shipping-cost").innerText = `$${cost}`;
+      }
+    </script>
+  </body>
+</html>
