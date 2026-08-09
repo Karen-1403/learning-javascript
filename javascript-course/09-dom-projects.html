@@ -4,15 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>dom</title>
+    <style>
+      body {
+        font-family: Arial;
+      }
+      .subscribe-button {
+        border: none;
+        padding: 10px 15px;
+        font-weight: bold;
+        border-radius: 50px;
+        color: white;
+        background-color: black;
+        margin-bottom: 35px;
+        cursor: pointer;
+      }
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: black;
+      }
+      .cost-input {
+        padding: 10px;
+        font-size: 15px;
+      }
+      .calculate-button {
+        border: none;
+        background-color: green;
+        color: white;
+        padding: 12px 15px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-bottom: 39px;
+      }
+    </style>
   </head>
   <body>
     <p>YouTube Subscribe Button</p>
-    <button class="js-subscribe-button" onclick="handleSubscribe()">
+    <button
+      class="js-subscribe-button subscribe-button"
+      onclick="handleSubscribe()"
+    >
       Subscribe
     </button>
-    <p>Rock Paper Scissors</p>
-    <a href="06-rock-paper-scissors.html">Click here</a>
-    <p></p>
 
     <p>Amazon Shipping Calculator</p>
     <p>Orders under $40 = +$10 shipping.</p>
@@ -20,18 +52,24 @@
     <p>Orders over $40 = FREE shipping.</p>
     <input
       placeholder="Cost of order"
-      class="js-cost-input"
+      class="js-cost-input cost-input"
       onkeydown="handleCostInputKeydown(event)"
     />
-    <button onclick="calculateShippingCost()">Calculate</button>
+    <button class="calculate-button" onclick="calculateShippingCost()">
+      Calculate
+    </button>
     <p class="js-shipping-cost"></p>
+    <p>Rock Paper Scissors</p>
+    <a href="06-rock-paper-scissors.html">Click here</a>
     <script>
       function handleSubscribe() {
         const subscribeButton = document.querySelector(".js-subscribe-button");
         if (subscribeButton.innerText === "Subscribe") {
           subscribeButton.innerText = "Subscribed";
+          subscribeButton.classList.add("is-subscribed");
         } else {
           subscribeButton.innerText = "Subscribe";
+          subscribeButton.classList.remove("is-subscribed");
         }
       }
 
