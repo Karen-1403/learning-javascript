@@ -2,32 +2,32 @@
 <html>
   <head>
     <title>Calculator</title>
+    <link rel="stylesheet" href="styles/calculator.css" />
   </head>
   <body>
-    <p>Calculator</p>
-    <p class="js-result"></p>
-    <button onclick="updtateCalculation('1')">1</button>
-    <button onclick="updtateCalculation('2')">2</button>
-    <button onclick="updtateCalculation('3')">3</button>
-    <button onclick="updtateCalculation('+')">+</button>
+    <p class="js-result result"></p>
+    <button class="btn" onclick="updtateCalculation('1')">1</button>
+    <button class="btn" onclick="updtateCalculation('2')">2</button>
+    <button class="btn" onclick="updtateCalculation('3')">3</button>
+    <button class="btn orange-btn" onclick="updtateCalculation('+')">+</button>
 
     <p></p>
-    <button onclick="updtateCalculation('4')">4</button>
-    <button onclick="updtateCalculation('5')">5</button>
-    <button onclick="updtateCalculation('6')">6</button>
-    <button onclick="updtateCalculation('-')">-</button>
+    <button class="btn" onclick="updtateCalculation('4')">4</button>
+    <button class="btn" onclick="updtateCalculation('5')">5</button>
+    <button class="btn" onclick="updtateCalculation('6')">6</button>
+    <button class="btn orange-btn" onclick="updtateCalculation('-')">-</button>
     <p></p>
-    <button onclick="updtateCalculation('7')">7</button>
-    <button onclick="updtateCalculation('8')">8</button>
-    <button onclick="updtateCalculation('9')">9</button>
-    <button onclick="updtateCalculation('*')">*</button>
+    <button class="btn" onclick="updtateCalculation('7')">7</button>
+    <button class="btn" onclick="updtateCalculation('8')">8</button>
+    <button class="btn" onclick="updtateCalculation('9')">9</button>
+    <button class="btn orange-btn" onclick="updtateCalculation('*')">*</button>
     <p></p>
-    <button onclick="updtateCalculation('0')">0</button>
-    <button onclick="updtateCalculation('.')">.</button>
-    <button onclick="updtateCalculation('=')">=</button>
-    <button onclick="updtateCalculation('/')">/</button>
+    <button class="btn" onclick="updtateCalculation('0')">0</button>
+    <button class="btn" onclick="updtateCalculation('.')">.</button>
+    <button class="btn" onclick="updtateCalculation('=')">=</button>
+    <button class="btn orange-btn" onclick="updtateCalculation('/')">/</button>
     <p></p>
-    <button onclick="updtateCalculation('')">Clear</button>
+    <button class="btn clear" onclick="updtateCalculation('')">Clear</button>
     <script>
       let calculation = localStorage.getItem("calculation") || "";
       if (localStorage.getItem("calculation")) {

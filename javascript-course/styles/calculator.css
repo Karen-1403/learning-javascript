@@ -1,0 +1,32 @@
+body {
+  background-color: black;
+  font-family: Arial;
+}
+
+.result {
+  font-size: 45px;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.btn {
+  border: none;
+  padding: 10px;
+  border-radius: 60px;
+  height: 60px;
+  width: 60px;
+  margin-right: 5px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  background-color: rgb(51, 51, 51);
+}
+
+.clear {
+  font-size: 17px;
+  text-align: center;
+}
+
+.orange-btn {
+  background-color: rgb(254, 160, 10);
+}

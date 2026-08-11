@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .add-to-cart-btn {
+        background-color: rgb(255, 216, 20);
+        padding: 5px 40px;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+      }
+      .request-now-btn {
+        background-color: black;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 12px 20px;
+        cursor: pointer;
+        font-weight: bold;
+        margin-right: 20px;
+      }
+      .schedule-for-later-btn {
+        color: black;
+        background-color: rgb(230, 230, 230);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 12px 20px;
+      }
+      .genre-btn {
+        border: none;
+        border-radius: 5px;
+        color: black;
+        background: rgb(230, 230, 230);
+        padding: 10px 15px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 15px;
+      }
+      .is-toggled {
+        background-color: black;
+        color: white;
+      }
+      .cost-input {
+        padding: 10px;
+        font-size: 15px;
+      }
+      .calculate-button {
+        border: none;
+        background-color: green;
+        color: white;
+        padding: 12px 15px;
+        font-size: 15px;
+        cursor: pointer;
+        margin-bottom: 39px;
+      }
+      .cost-error {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <button type="button" class="add-to-cart-btn">Add to Cart</button>
+    <button type="button" class="request-now-btn">Request Now</button>
+    <button type="button" class="schedule-for-later-btn">
+      Schedule for later
+    </button>
+    <button type="button" class="js-btn">btn</button>
+    <p></p>
+    <button type="button" class="genre-btn" onclick="toggleGenreBtn(this)">
+      Gaming
+    </button>
+    <button type="button" class="genre-btn" onclick="toggleGenreBtn(this)">
+      Music
+    </button>
+    <button type="button" class="genre-btn" onclick="toggleGenreBtn(this)">
+      Tech
+    </button>
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +$10 shipping.</p>
+
+    <p>Orders over $40 = FREE shipping.</p>
+    <input
+      placeholder="Cost of order"
+      class="js-cost-input cost-input"
+      onkeydown="handleCostInputKeydown(event)"
+    />
+    <button
+      type="button"
+      class="calculate-button"
+      onclick="calculateShippingCost()"
+    >
+      Calculate
+    </button>
+    <p class="js-shipping-cost"></p>
+    <script>
+      jsBtn = document.querySelector(".js-btn");
+
+      console.log(jsBtn.classList.contains("js-btn"));
+
+      function toggleGenreBtn(genreBtn) {
+        if (genreBtn.classList.contains("is-toggled")) {
+          genreBtn.classList.remove("is-toggled");
+        } else {
+          turnOffPreviousBtn();
+          genreBtn.classList.add("is-toggled");
+        }
+      }
+      function turnOffPreviousBtn() {
+        prevBtn = document.querySelector(".is-toggled");
+        if (prevBtn) {
+          prevBtn.classList.remove("is-toggled");
+        }
+      }
+      function handleCostInputKeydown(event) {
+        if (event.key === "Enter") {
+          calculateShippingCost();
+        }
+      }
+      function calculateShippingCost() {
+        const costInput = document.querySelector(".js-cost-input");
+        let shippingCost = Number(costInput.value) * 100;
+        if (shippingCost < 0) {
+          displayError();
+          return;
+        } else {
+          document
+            .querySelector(".js-shipping-cost")
+            .classList.remove("cost-error");
+          if (shippingCost < 4000) {
+            shippingCost += 1000;
+          }
+          displayCost(shippingCost / 100);
+        }
+      }
+      function displayCost(cost) {
+        document.querySelector(".js-shipping-cost").innerText = `$${cost}`;
+      }
+      function displayError() {
+        document.querySelector(".js-shipping-cost").innerText =
+          "Error: Cost cannot be less than $0.";
+        document.querySelector(".js-shipping-cost").classList.add("cost-error");
+      }
+    </script>
+  </body>
+</html>
