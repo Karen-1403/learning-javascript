@@ -1,16 +1,25 @@
 let todos = [];
 renderTodos();
 function addTodo() {
-  const name = document.querySelector(".js-todo-input").value;
-  todos.push(name);
-  document.querySelector(".js-todo-input").value = "";
+  const name = document.querySelector(".js-todo-name").value;
+  const date = document.querySelector(".js-todo-date").value;
+  todos.push({ name, date });
+  document.querySelector(".js-todo-name").value = "";
+  document.querySelector(".js-todo-date").value = "";
   renderTodos();
 }
 
 function renderTodos() {
   let todoHTML = "";
   for (let i = 0; i < todos.length; i++) {
-    todoHTML += `<p>${todos[i]}</p>`;
+    todoHTML += `
+    <div>${todos[i].name}</div>
+    <div>${todos[i].date}</div>
+    <button class="delete-todo-btn" 
+    onclick="
+    todos.splice(${i}, 1); renderTodos();"
+    >Delete</button>
+    `;
   }
   document.querySelector(".js-todo-html").innerHTML = todoHTML;
 }

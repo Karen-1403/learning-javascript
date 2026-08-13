@@ -4,16 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
+    <link rel="stylesheet" href="styles/11-todo-list.css" />
   </head>
   <body>
     <p>Todo List</p>
-    <input
-      placeholder="Todo name"
-      class="js-todo-input"
-      onkeydown="handleInputKeyDown(event)"
-    />
-    <button class="js-add-todo" onclick="addTodo()">Add</button>
-    <div class="js-todo-html"></div>
+    <div class="todo-input-grid">
+      <input
+        placeholder="Todo name"
+        class="js-todo-name todo-name"
+        onkeydown="handleInputKeyDown(event)"
+      />
+      <input class="js-todo-date todo-date" type="date" />
+      <button class="js-add-todo add-todo-btn" onclick="addTodo()">Add</button>
+    </div>
+    <div class="js-todo-html todo-grid"></div>
+
     <script src="scripts/11-todo-list.js"></script>
   </body>
 </html>
