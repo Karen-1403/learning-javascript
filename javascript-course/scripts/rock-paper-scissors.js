@@ -4,7 +4,19 @@ const score = JSON.parse(localStorage.getItem("score")) || {
   ties: 0,
 };
 displayScoreElement();
-
+let isAutoPlaying = false;
+let intervalId;
+function autoPlay() {
+  if (!isAutoPlaying) {
+    intervalId = setInterval(function () {
+      playGame(pickComputerMove());
+    }, 1000);
+    isAutoPlaying = true;
+  } else {
+    clearInterval(intervalId);
+    isAutoPlaying = false;
+  }
+}
 function pickComputerMove() {
   const randomNumber = Math.random();
   let computerMove = "";

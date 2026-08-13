@@ -12,16 +12,16 @@ function addTodo() {
 
 function renderTodos() {
   let todoHTML = "";
-  for (let i = 0; i < todos.length; i++) {
+  todos.forEach(function (todoObject, index) {
     todoHTML += `
-    <div>${todos[i].name}</div>
-    <div>${todos[i].date}</div>
+    <div>${todoObject.name}</div>
+    <div>${todoObject.date}</div>
     <button class="delete-todo-btn" 
     onclick="
-    todos.splice(${i}, 1); saveToStorage(); renderTodos();"
+    todos.splice(${index}, 1); saveToStorage(); renderTodos();"
     >Delete</button>
     `;
-  }
+  });
   document.querySelector(".js-todo-html").innerHTML = todoHTML;
 }
 
