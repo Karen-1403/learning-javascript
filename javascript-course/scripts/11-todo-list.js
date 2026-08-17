@@ -12,18 +12,24 @@ function addTodo() {
 
 function renderTodos() {
   let todoHTML = "";
-  todos.forEach(function (todoObject, index) {
+  todos.forEach((todoObject, index) => {
     todoHTML += `
     <div>${todoObject.name}</div>
     <div>${todoObject.date}</div>
-    <button class="delete-todo-btn" 
-    onclick="
-    todos.splice(${index}, 1); saveToStorage(); renderTodos();"
+    <button class="delete-todo-btn js-delete-todo-btn" 
     >Delete</button>
     `;
   });
   document.querySelector(".js-todo-html").innerHTML = todoHTML;
 }
+
+document.querySelectorAll(".js-delete-todo-btn").forEach((deleteBtn, index) => {
+  deleteBtn.addEventListener("click", () => {
+    todos.splice(index, 1);
+    saveToStorage();
+    renderTodos();
+  });
+});
 
 function handleInputKeyDown() {
   if (event.key === "Enter") {
@@ -33,3 +39,7 @@ function handleInputKeyDown() {
 function saveToStorage() {
   localStorage.setItem("todos", JSON.stringify(todos));
 }
+
+document.querySelector(".js-add-todo").addEventListener("click", () => {
+  addTodo();
+});

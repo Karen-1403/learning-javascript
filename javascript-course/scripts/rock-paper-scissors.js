@@ -8,7 +8,7 @@ let isAutoPlaying = false;
 let intervalId;
 function autoPlay() {
   if (!isAutoPlaying) {
-    intervalId = setInterval(function () {
+    intervalId = setInterval(() => {
       playGame(pickComputerMove());
     }, 1000);
     isAutoPlaying = true;
@@ -78,3 +78,25 @@ function displayScoreElement() {
   document.querySelector(".js-score").innerText =
     `Wins: ${score.wins}, Losses: ${score.losses}, Ties: ${score.ties}`;
 }
+
+document.querySelector(".js-rock-button").addEventListener("click", () => {
+  playGame("Rock");
+});
+
+document.querySelector(".js-paper-button").addEventListener("click", () => {
+  playGame("Paper");
+});
+
+document.querySelector(".js-scissors-button").addEventListener("click", () => {
+  playGame("Scissors");
+});
+
+document.body.addEventListener("keydown", (event) => {
+  if (event.key === "r") {
+    playGame("Rock");
+  } else if (event.key === "p") {
+    playGame("Paper");
+  } else if (event.key === "s") {
+    playGame("Scissors");
+  }
+});

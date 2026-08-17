@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App</title>
+  </head>
+  <body>
+    <button onclick="start()" class="start-btn">Start</button>
+    <div>
+      <button class="add-to-cart-btn" onclick="addToCart()">Add to Cart</button>
+      <p class="add-to-cart-message"></p>
+    </div>
+    <button onclick="add()">Add</button>
+    <button onclick="remove()">Remove</button>
+    <script>
+      function start() {
+        const button = document.querySelector(".start-btn");
+        button.innerText = "Loading...";
+        setTimeout(function () {
+          button.innerText = "Finished!";
+        }, 1000);
+      }
+      let timeoutId;
+      function addToCart() {
+        const message = document.querySelector(".add-to-cart-message");
+        message.innerHTML = "Added";
+        clearTimeout(timeoutId);
+        timeoutId = setTimeout(function () {
+          message.innerHTML = "";
+        }, 2000);
+      }
+      let messages = 2;
+      /*setInterval(function () {
+        if (document.title === "App")
+          document.title = `(${messages}) New messages`;
+        else document.title = "App";
+      }, 1000);*/
+
+      function add() {
+        messages++;
+      }
+      function remove() {
+        messages--;
+      }
+    </script>
+  </body>
+</html>
