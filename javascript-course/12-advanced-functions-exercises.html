@@ -43,6 +43,39 @@
       function remove() {
         messages--;
       }
+
+      const multiply = (a, b) => a * b;
+      console.log(multiply(2, 3));
+
+      const countPositive = (arr) => {
+        let count = 0;
+        arr.forEach((num) => {
+          num > 0 ? count++ : null;
+        });
+        return count;
+      };
+      console.log(countPositive([-1, 0, 1, 2, 3]));
+
+      const addNum = (arr) => arr.map((num) => num + 1);
+      console.log(addNum([1, 2, 3]));
+
+      const removeEgg = (arr) => {
+        let count = 0;
+        const returnArr = arr.filter((item) => {
+          if (item !== "egg") {
+            return true;
+          } else {
+            count++;
+            if (count > 2) {
+              return true;
+            }
+          }
+        });
+        console.log(arr);
+        return returnArr;
+      };
+
+      console.log(removeEgg(["egg", "milk", "egg", "egg", "flour"]));
     </script>
   </body>
 </html>
