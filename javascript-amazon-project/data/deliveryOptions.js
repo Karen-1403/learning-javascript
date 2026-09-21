@@ -46,3 +46,15 @@ function isWeekend(date) {
   const dayOfWeek = date.format("dddd");
   return dayOfWeek === "Saturday" || dayOfWeek === "Sunday";
 }
+
+export function isValidDeliveryOption(deliveryOptionId) {
+  let found = false;
+
+  deliveryOptions.forEach((option) => {
+    if (option.id === deliveryOptionId) {
+      found = true;
+    }
+  });
+
+  return found;
+}
