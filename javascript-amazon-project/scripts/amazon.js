@@ -40,6 +40,7 @@ products.forEach((product) => {
             </select>
             
           </div>
+          ${product.extraInfoHTML()}
           <button class="js-add-to-cart-button
             add-to-cart-button button-primary" data-testid="add-to-cart-button" 
             data-product-id="${product.id}">
