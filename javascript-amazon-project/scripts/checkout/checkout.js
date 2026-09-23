@@ -1,5 +1,5 @@
 import { cart } from "../../data/cart-class.js";
-import "../../data/backend-practice.js";
+//import "../../data/backend-practice.js";
 export function renderCheckoutHeader() {
   let cartQuantity = 0;
 
