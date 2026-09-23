@@ -1,11 +1,10 @@
-// import "../../data/cart-class.js";
-
-import "../../data/car.js";
+import { cart } from "../../data/cart-class.js";
+import "../../data/backend-practice.js";
 export function renderCheckoutHeader() {
   let cartQuantity = 0;
 
-  cart.forEach((cartItem) => {
-    cartQuantity += cartItem.quantity;
+  cart.cartItems.forEach((cartItem) => {
+    cartQuantity += cartItem.productQuantity;
   });
 
   const checkoutHeaderHTML = `

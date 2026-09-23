@@ -13,8 +13,6 @@ import { renderCheckoutHeader } from "./checkout.js";
 export function renderOrderSummary() {
   let cartSummaryHTML = "";
 
-  cart.updateCartQuantity();
-
   cart.cartItems.forEach((cartItem) => {
     const productId = cartItem.productId;
     let matchingProduct = getProduct(productId);
