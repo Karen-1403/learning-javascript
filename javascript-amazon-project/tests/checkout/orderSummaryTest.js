@@ -22,12 +22,12 @@ describe("Test suite: renderOrderSummary", () => {
     cart.cartItems = [
       {
         productId: productId1,
-        quantity: 2,
+        productQuantity: 2,
         deliveryOptionId: "1",
       },
       {
         productId: productId2,
-        quantity: 1,
+        productQuantity: 1,
         deliveryOptionId: "2",
       },
     ];
