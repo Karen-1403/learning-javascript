@@ -61,7 +61,7 @@ async function loadPage() {
       const orderId = button.dataset.orderId;
       button.addEventListener("click", (event) => {
         event.preventDefault();
-        window.location.href = `https://supersimple.dev/projects/amazon/tracking.html?orderId=${orderId}&cartItemId=${productId}`;
+        window.location.href = `tracking.html?orderId=${orderId}&cartItemId=${productId}`;
       });
     });
 
