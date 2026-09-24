@@ -39,7 +39,7 @@ export function renderOrderSummary() {
                   ${matchingProduct.getPrice()}
                 </div>
                 <div class="product-quantity js-product-quantity-${matchingProduct.id}">
-                  <span> Quantity: <span class="quantity-label js-quantity-label-${matchingProduct.id}">${cartItem.productQuantity}</span> </span>
+                  <span> Quantity: <span class="quantity-label js-quantity-label-${matchingProduct.id}">${cartItem.quantity}</span> </span>
                   <span data-product-id=${matchingProduct.id} class="update-quantity-link js-update-quantity-link link-primary">
                     Update
                   </span>

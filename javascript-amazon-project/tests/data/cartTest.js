@@ -8,7 +8,7 @@ describe("Test suite: addToCart", () => {
     cart.cartItems = [
       {
         productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-        productQuantity: 1,
+        quantity: 1,
         deliveryOptionId: "1",
       },
     ];
@@ -18,13 +18,13 @@ describe("Test suite: addToCart", () => {
     expect(cart.cartItems[0].productId).toEqual(
       "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     );
-    expect(cart.cartItems[0].productQuantity).toEqual(2);
+    expect(cart.cartItems[0].quantity).toEqual(2);
     expect(localStorage.setItem).toHaveBeenCalledWith(
       "cart",
       JSON.stringify([
         {
           productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-          productQuantity: 2,
+          quantity: 2,
           deliveryOptionId: "1",
         },
       ]),
@@ -39,13 +39,13 @@ describe("Test suite: addToCart", () => {
     expect(cart.cartItems[0].productId).toEqual(
       "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
     );
-    expect(cart.cartItems[0].productQuantity).toEqual(1);
+    expect(cart.cartItems[0].quantity).toEqual(1);
     expect(localStorage.setItem).toHaveBeenCalledWith(
       "cart",
       JSON.stringify([
         {
           productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-          productQuantity: 1,
+          quantity: 1,
           deliveryOptionId: "1",
         },
       ]),
@@ -62,12 +62,12 @@ describe("Test suite: removeFromCart", () => {
     cart.cartItems = [
       {
         productId: productId1,
-        productQuantity: 1,
+        quantity: 1,
         deliveryOptionId: "1",
       },
       {
         productId: productId2,
-        productQuantity: 1,
+        quantity: 1,
         deliveryOptionId: "2",
       },
     ];
@@ -82,7 +82,7 @@ describe("Test suite: removeFromCart", () => {
       JSON.stringify([
         {
           productId: productId2,
-          productQuantity: 1,
+          quantity: 1,
           deliveryOptionId: "2",
         },
       ]),
@@ -98,12 +98,12 @@ describe("Test suite: removeFromCart", () => {
       JSON.stringify([
         {
           productId: productId1,
-          productQuantity: 1,
+          quantity: 1,
           deliveryOptionId: "1",
         },
         {
           productId: productId2,
-          productQuantity: 1,
+          quantity: 1,
           deliveryOptionId: "2",
         },
       ]),
@@ -121,14 +121,14 @@ describe("Test suite: updateDeliveryOption", () => {
     cart.cartItems = [
       {
         productId: productId1,
-        productQuantity: 1,
+        quantity: 1,
         deliveryOptionId: "1",
       },
     ];
     cart.updateDeliveryOption(productId1, "2");
     expect(cart.cartItems.length).toEqual(1);
     expect(cart.cartItems[0].productId).toEqual(productId1);
-    expect(cart.cartItems[0].productQuantity).toEqual(1);
+    expect(cart.cartItems[0].quantity).toEqual(1);
     expect(cart.cartItems[0].deliveryOptionId).toEqual("2");
     expect(localStorage.setItem).toHaveBeenCalledTimes(1);
     expect(localStorage.setItem).toHaveBeenCalledWith(
@@ -136,7 +136,7 @@ describe("Test suite: updateDeliveryOption", () => {
       JSON.stringify([
         {
           productId: productId1,
-          productQuantity: 1,
+          quantity: 1,
           deliveryOptionId: "2",
         },
       ]),
@@ -147,7 +147,7 @@ describe("Test suite: updateDeliveryOption", () => {
     cart.cartItems = [
       {
         productId: productId1,
-        productQuantity: 1,
+        quantity: 1,
         deliveryOptionId: "1",
       },
     ];
@@ -155,7 +155,7 @@ describe("Test suite: updateDeliveryOption", () => {
     cart.updateDeliveryOption("does not exist", "2");
     expect(cart.cartItems.length).toEqual(1);
     expect(cart.cartItems[0].productId).toEqual(productId1);
-    expect(cart.cartItems[0].productQuantity).toEqual(1);
+    expect(cart.cartItems[0].quantity).toEqual(1);
     expect(cart.cartItems[0].deliveryOptionId).toEqual("1");
     expect(localStorage.setItem).toHaveBeenCalledTimes(0);
   });

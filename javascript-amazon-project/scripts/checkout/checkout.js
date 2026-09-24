@@ -4,7 +4,7 @@ export function renderCheckoutHeader() {
   let cartQuantity = 0;
 
   cart.cartItems.forEach((cartItem) => {
-    cartQuantity += cartItem.productQuantity;
+    cartQuantity += cartItem.quantity;
   });
 
   const checkoutHeaderHTML = `
