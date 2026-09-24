@@ -90,6 +90,10 @@ class Cart {
     matchingItem.deliveryOptionId = deliveryOptionId;
     this.saveToCart();
   }
+  resetCart() {
+    this.cartItems = [];
+    this.saveToCart();
+  }
 }
 
 export const cart = new Cart("cart");

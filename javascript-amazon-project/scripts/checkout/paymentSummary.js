@@ -74,6 +74,7 @@ export function renderPaymentSummary() {
         });
         const order = await response.json();
         addOrder(order);
+        cart.resetCart();
       } catch (error) {
         console.error("Error placing order:", error);
       }
