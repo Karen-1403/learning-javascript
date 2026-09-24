@@ -1,5 +1,6 @@
 import { getProduct, loadProductsFetch } from "../data/products.js";
 import { getOrderById } from "../data/orders.js";
+import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 
 async function renderTrackingPage() {
   await loadProductsFetch();
@@ -19,7 +20,13 @@ async function renderTrackingPage() {
     return matchingProduct;
   }
   const packageItem = getPackageFromOrder(order, cartItemId);
-  const packageHTML = `<div class="delivery-date">Arriving on Monday, June 13</div>
+  const packageDateString = dayjs(packageItem.estimatedDeliveryTime).format(
+    "MMMM D",
+  );
+  const packageHTML = `<a class="back-to-orders-link link-primary" href="orders.html">
+          View all orders
+        </a>
+        <div class="delivery-date">Arriving on ${packageDateString}</div>
 
         <div class="product-info">
           ${product.name}
@@ -31,7 +38,17 @@ async function renderTrackingPage() {
           class="product-image"
           src="${product.image}"
         />
+        <div class="progress-labels-container">
+          <div class="progress-label">Preparing</div>
+          <div class="progress-label current-status">Shipped</div>
+          <div class="progress-label">Delivered</div>
+        </div>
+
+        <div class="progress-bar-container">
+          <div class="progress-bar"></div>
+        </div>
+      
 `;
-  document.querySelector(".js-package-details").innerHTML = packageHTML;
+  document.querySelector(".js-order-tracking").innerHTML = packageHTML;
 }
 renderTrackingPage();
