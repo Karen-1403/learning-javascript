@@ -8,7 +8,20 @@ loadProductsFetch().then(() => {
 function renderProductsGrid() {
   let productsHTML = "";
   updateCartQuantity();
-  products.forEach((product) => {
+  let filteredProducts = products;
+  const url = new URL(window.location.href);
+  const search = url.searchParams.get("search");
+  if (search) {
+    filteredProducts = products.filter((product) => {
+      return (
+        product.name.toLowerCase().includes(search.toLowerCase()) ||
+        product.keywords.some((keyword) =>
+          keyword.toLowerCase().includes(search.toLowerCase()),
+        )
+      );
+    });
+  }
+  filteredProducts.forEach((product) => {
     productsHTML += `
   <div class="product-container">
   <div class="product-image-container">
@@ -70,4 +83,19 @@ function renderProductsGrid() {
       updateCartQuantity();
     });
   });
+
+  document
+    .querySelector(".js-search-button")
+    .addEventListener("click", (event) => {
+      const searchTerm = document.querySelector(".js-search-bar").value;
+      window.location.href = `amazon.html?search=${searchTerm}`;
+    });
+  document
+    .querySelector(".js-search-bar")
+    .addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        const searchTerm = document.querySelector(".js-search-bar").value;
+        window.location.href = `amazon.html?search=${searchTerm}`;
+      }
+    });
 }

@@ -16,13 +16,15 @@ export class Product {
   name;
   rating;
   priceCents;
+  keywords;
   constructor(productDetails) {
-    const { id, image, name, rating, priceCents } = productDetails;
+    const { id, image, name, rating, priceCents, keywords } = productDetails;
     this.id = id;
     this.image = image;
     this.name = name;
     this.rating = rating;
     this.priceCents = priceCents;
+    this.keywords = keywords;
   }
 
   getStarsUrl() {
