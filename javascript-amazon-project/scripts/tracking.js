@@ -32,7 +32,7 @@ async function renderTrackingPage() {
   const packageHTML = `<a class="back-to-orders-link link-primary" href="orders.html">
           View all orders
         </a>
-        <div class="delivery-date">Arriving on ${packageDateString}</div>
+        <div class="delivery-date">${deliverytime > today ? "Arriving on" : "Delivered on"} ${packageDateString}</div>
 
         <div class="product-info">
           ${product.name}
